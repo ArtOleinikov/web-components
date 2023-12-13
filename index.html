@@ -1,59 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-		<meta charset="UTF-8"/>
-		<link rel="icon" type="image/svg+xml" href="/vite.svg"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<title>Vite + Lit + TS</title>
-		<link rel="stylesheet" href="./src/index.css"/>
-		<script type="module" src="/src/lit-btn.ts"></script>
-		<script type="module" src="/src/js-btn.js"></script>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vite + Lit + TS</title>
+  <link rel="stylesheet" href="./src/index.css"/>
+  <script type="module" src="/src/lit-btn.ts"></script>
+  <script type="module" src="/src/js-btn.js"></script>
 </head>
 <body>
 
-<lit-btn id="lit-btn" exampleValue="Lit HTML value">
-</lit-btn>
+<lit-btn id="lit-btn" exampleValue="Lit HTML value"></lit-btn>
 <h2 id="lit-result"></h2>
 
 <js-btn id="js-btn" exampleValue="JS HTML value">
-		<span slot="title">Title from slot</span>
+  <span slot="title">Title from slot</span>
 </js-btn>
 <h2 id="js-result"></h2>
 
 <div>
-		<label><input type="radio" name="buttonType" value="variant1" checked>Variant 1</label>
-		<label><input type="radio" name="buttonType" value="variant2">Variant 2</label>
-		<label><input type="radio" name="buttonType" value="variant3">Variant 3</label>
+  <label><input type="radio" name="buttonType" value="variant1" checked>Variant 1</label>
+  <label><input type="radio" name="buttonType" value="variant2">Variant 2</label>
+  <label><input type="radio" name="buttonType" value="variant3">Variant 3</label>
 </div>
 <script>
-	const litBtn = document.getElementById("lit-btn");
-	const jsBtn = document.getElementById("js-btn");
+  const litBtn = document.getElementById("lit-btn");
+  const jsBtn = document.getElementById("js-btn");
 
-	const litResult = document.getElementById("lit-result");
-	const jsResult = document.getElementById("js-result");
+  const litResult = document.getElementById("lit-result");
+  const jsResult = document.getElementById("js-result");
 
-	document.querySelectorAll('input[name="buttonType"]').forEach(radio => {
-		radio.addEventListener('change', () => {
-			if (radio.checked) {
-				litBtn.exampleValue = radio.value;
-				jsBtn.exampleValue = radio.value;
-			}
-		});
-	});
+  document.querySelectorAll('input[name="buttonType"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.checked) {
+        litBtn.exampleValue = radio.value;
+        jsBtn.exampleValue = radio.value;
+      }
+    });
+  });
 
-	litBtn.addEventListener('example-event', (event) => {
-		litResult.innerText = 'Lit Result:' + event.detail
-	})
+  litBtn.addEventListener('example-event', (event) => {
+    litResult.innerText = 'Lit Result:' + event.detail
+  })
 
-	jsBtn.addEventListener('example-event', (event) => {
-		jsResult.innerText = 'js Result:' + event.detail
-	})
+  jsBtn.addEventListener('example-event', (event) => {
+    jsResult.innerText = 'js Result:' + event.detail
+  })
 </script>
 
 <style>
-		:root {
+    :root {
         --bg-btn: #f00;
-		}
+    }
 </style>
 
 </body>
