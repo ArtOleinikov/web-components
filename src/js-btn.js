@@ -46,6 +46,11 @@ class JsBtn extends HTMLElement {
   
   render() {
     this.shadowRoot.innerHTML = `
+      <style>
+        button {
+          background: var(--bg-btn, #646cff);
+        }
+      </style>
       <button type="${this.exampleValue}" onclick="this.getRootNode().host.completedEvent()">
         <slot name="title">Default Title</slot>, type: ${this.exampleValue}
       </button>
