@@ -51,7 +51,7 @@ class JsBtn extends HTMLElement {
           background: var(--bg-btn, #646cff);
         }
       </style>
-      <button type="${this.exampleValue}" onclick="this.getRootNode().host.completedEvent()">
+      <button type="${this.exampleValue}" class="btn btn-primary" onclick="this.getRootNode().host.completedEvent()">
         <slot name="title">Default Title</slot>, type: ${this.exampleValue}
       </button>
     `;
