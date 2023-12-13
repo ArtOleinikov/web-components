@@ -11,11 +11,11 @@ class JsBtn extends HTMLElement {
   
   connectedCallback() {
     this.render();
-    this.shadowRoot.querySelector('button').addEventListener('click', () => this.completedEvent());
+    // this.shadowRoot.querySelector('button').addEventListener('click', () => this.completedEvent());
   }
   
   disconnectedCallback() {
-    this.shadowRoot.querySelector('button').removeEventListener('click', () => this.completedEvent());
+    // this.shadowRoot.querySelector('button').removeEventListener('click', () => this.completedEvent());
   }
   
   get exampleValue() {
@@ -32,7 +32,6 @@ class JsBtn extends HTMLElement {
     if (name === 'exampleValue' && oldValue !== newValue) {
       this.exampleValue = newValue;
       this.render();
-      
     }
   }
   
