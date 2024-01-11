@@ -26,7 +26,7 @@
     <div class="container my-5">
       <h1>Hello, world!</h1>
       <div class="col-lg-8 px-0">
-        <lit-btn id="lit-btn" exampleValue="Lit HTML value"> </lit-btn>
+        <lit-btn id="lit-btn" exampleValue="Lit HTML value" products='[]'> </lit-btn>
         <div id="lit-result"></div>
 
         <div>
@@ -54,13 +54,8 @@
       const litBtn = document.getElementById("lit-btn");
       const litResult = document.getElementById("lit-result");
 
-      const data = {
-        country: "IE",
-        currency: "EUR",
-        maId: "9781119652946",
-        quantity: "1",
-      };
-      litBtn.data = data;
+      // const data = { country: "IE", currency: "EUR", maId: "9781119652946", quantity: "1" };
+      // litBtn.data = data;
 
       document.querySelectorAll('input[name="buttonType"]').forEach((radio) => {
         radio.addEventListener("change", () => {
@@ -76,6 +71,24 @@
     <prev>${JSON.stringify(event.detail.data.wAddToCart, null, 2)}</prev>
     `;
       });
+
+
+
+      function setProducts() {
+        const customEvent = new CustomEvent("cart:setProducts", {
+          bubbles: true,
+          composed: true,
+          detail: '[{"country":"IE","currency":"EUR","maId":"9781119652946","quantity":"1"}]',
+        });
+
+        litBtn.dispatchEvent(customEvent)
+      }
+
+      // like init 
+      setTimeout(() => {
+        setProducts()
+      }, 3000)
+
     </script>
 
     <style>
