@@ -1,49 +1,48 @@
 class JsBtn extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({mode: 'open'});
-    this.exampleValue = this.getAttribute('exampleValue');
+    this.attachShadow({ mode: "open" });
+    this.exampleValue = this.getAttribute("exampleValue");
   }
-  
+
   static get observedAttributes() {
     return ["exampleValue"];
   }
-  
+
   connectedCallback() {
     this.render();
     // this.shadowRoot.querySelector('button').addEventListener('click', () => this.completedEvent());
   }
-  
+
   disconnectedCallback() {
     // this.shadowRoot.querySelector('button').removeEventListener('click', () => this.completedEvent());
   }
-  
+
   get exampleValue() {
     return this.getAttribute("exampleValue");
   }
-  
+
   set exampleValue(value) {
     this.setAttribute("exampleValue", value);
     this.render();
   }
-  
-  
+
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'exampleValue' && oldValue !== newValue) {
+    if (name === "exampleValue" && oldValue !== newValue) {
       this.exampleValue = newValue;
       this.render();
     }
   }
-  
+
   completedEvent() {
-    const customEvent = new CustomEvent('example-event', {
+    const customEvent = new CustomEvent("example-event", {
       bubbles: true,
       composed: true,
-      detail: this.exampleValue
+      detail: this.exampleValue,
     });
     this.dispatchEvent(customEvent);
   }
-  
+
   render() {
     this.shadowRoot.innerHTML = `
       <style>
@@ -58,4 +57,5 @@ class JsBtn extends HTMLElement {
   }
 }
 
-window.customElements.define('js-btn', JsBtn);
+!window.customElements.get("js-btn") ||
+  window.customElements.define("js-btn", JsBtn);
