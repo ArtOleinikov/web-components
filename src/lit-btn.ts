@@ -7,7 +7,7 @@ import { getCookieValue, parseCookie } from "./cookieService";
 @customElement("lit-btn")
 export class LitBtn extends LitElement {
   @property({ type: String }) exampleValue = "default value";
-  @property({ type: String }) products = '[]';
+  @property({ type: String }) product = '{}';
 
   async addToCart() {
     const lansaCart = await this.addToLansaCart();
@@ -24,7 +24,7 @@ export class LitBtn extends LitElement {
     const C_SESSION = getCookieValue("C_SESSION");
     const variables = {
       addToCartData: {
-        data: JSON.parse(this.products),
+        data: JSON.parse(this.product),
         cookie: C_SESSION ? `C_SESSION=${C_SESSION};` : "",
       },
     };
@@ -56,11 +56,11 @@ export class LitBtn extends LitElement {
   render() {
     console.log('Render');
     
-    document.addEventListener('cart:setProducts', (event) => {
+    document.addEventListener('cart:setProduct', (event) => {
       // @ts-ignore
       console.log('cart:setProducts', event.detail);
       // @ts-ignore
-      this.products = event.detail[0]
+      this.product = event.detail
     })
 
     return html`
