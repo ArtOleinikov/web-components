@@ -75,10 +75,10 @@
 
 
       function setProducts() {
-        const customEvent = new CustomEvent("cart:setProducts", {
+        const customEvent = new CustomEvent("cart:setProduct", {
           bubbles: true,
           composed: true,
-          detail: '[{"country":"IE","currency":"EUR","maId":"9781119652946","quantity":"1"}]',
+          detail: '{"country":"IE","currency":"EUR","maId":"9781119652946","quantity":"1"}',
         });
 
         litBtn.dispatchEvent(customEvent)
