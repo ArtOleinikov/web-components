@@ -59,6 +59,8 @@ export class LitBtn extends LitElement {
     document.addEventListener('cart:setProducts', (event) => {
       // @ts-ignore
       console.log('cart:setProducts', event.detail);
+      // @ts-ignore
+      this.products = event.detail[0]
     })
 
     return html`
